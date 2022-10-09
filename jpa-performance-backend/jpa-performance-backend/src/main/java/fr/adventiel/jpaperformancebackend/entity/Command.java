@@ -38,7 +38,7 @@ public class Command {
     /**
      * Customer who ordered the command.
      */
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @ToString.Exclude
     private Customer customer;
 
