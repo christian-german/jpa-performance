@@ -10,4 +10,6 @@ public interface CustomerService {
 
     List<Customer> findAll();
 
+    List<Customer> findAllWithCommands();
+
 }

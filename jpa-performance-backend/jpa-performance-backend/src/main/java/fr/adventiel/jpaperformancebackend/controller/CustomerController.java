@@ -5,10 +5,7 @@ import fr.adventiel.jpaperformancebackend.entity.Customer;
 import fr.adventiel.jpaperformancebackend.mapper.CustomerMapper;
 import fr.adventiel.jpaperformancebackend.service.CustomerService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -30,7 +27,10 @@ public class CustomerController {
     }
 
     @GetMapping
-    public List<CustomerDto> findAll() {
+    public List<CustomerDto> findAll(@RequestParam(defaultValue = "false") boolean loadCommands) {
+        if (loadCommands) {
+            return customerMapper.toDtosWithCommands(customerService.findAllWithCommands());
+        }
         return customerMapper.toDtos(customerService.findAll());
     }
 }

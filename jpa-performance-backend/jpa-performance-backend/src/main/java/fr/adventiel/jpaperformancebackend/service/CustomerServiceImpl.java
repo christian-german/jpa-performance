@@ -36,4 +36,13 @@ public class CustomerServiceImpl implements CustomerService {
         return customerRepository.findAll();
     }
 
+    /**
+     * Find all customers with their commands.
+     *
+     * @return A list of {@link Customer} entities.
+     */
+    public List<Customer> findAllWithCommands() {
+        return customerRepository.findAllWithCommands();
+    }
+
 }
